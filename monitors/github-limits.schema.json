@@ -1,0 +1,26 @@
+{
+  "definitions": {
+    "rateValues": {
+      "type": "object",
+      "properties": {
+        "limit": {"type": "number"},
+        "remaining": {"type": "number"},
+        "reset": {"type": "number"}
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "resources": {
+      "type": "object",
+      "properties": {
+        "core": {"$ref": "#/definitions/rateValues"},
+        "search": {"$ref": "#/definitions/rateValues"}
+      }
+    },
+    "rate": {"$ref": "#/definitions/rateValues"}
+  },
+  "additionalProperties": false
+}
