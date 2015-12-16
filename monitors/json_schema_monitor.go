@@ -35,7 +35,7 @@ func checkSchema(schemaFile string) core.SuccessChecker {
 		} else {
 			log.Printf("schema errors:")
 			for _, err := range result.Errors() {
-				log.Printf("\t %s: \t %s", err.Field(), err.Description())
+				log.Printf("\t %v: \t %s (on field %s)", err.Value(), err.Description(), err.Field())
 			}
 			return false
 		}
@@ -44,6 +44,18 @@ func checkSchema(schemaFile string) core.SuccessChecker {
 
 func (monitor *JsonSchemaMonitor) Check() int {
 	return monitor.delegate.Check()
+}
+
+func (monitor *JsonSchemaMonitor) Description() string {
+	return monitor.delegate.Description()
+}
+
+func (monitor *JsonSchemaMonitor) Name() string {
+	return monitor.delegate.Name()
+}
+
+func (monitor *JsonSchemaMonitor) Values() []core.ValueWithTimestamp {
+	return monitor.delegate.Values()
 }
 
 func NewJsonSchemaMonitorWithOptions(title, description, url, schema string,
