@@ -33,7 +33,7 @@ func checkSchema(schemaFile string) core.SuccessChecker {
 		if result.Valid() {
 			return true
 		} else {
-			log.Printf("schema errors:")
+			log.Printf("%s schema errors:", schemaFile)
 			for _, err := range result.Errors() {
 				log.Printf("\t %v: \t %s (on field %s)", err.Value(), err.Description(), err.Field())
 			}
