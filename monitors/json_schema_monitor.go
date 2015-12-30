@@ -58,6 +58,18 @@ func (monitor *JsonSchemaMonitor) Values() []core.ValueWithTimestamp {
 	return monitor.delegate.Values()
 }
 
+func (monitor *JsonSchemaMonitor) Trip() {
+	monitor.delegate.Trip()
+}
+
+func (monitor *JsonSchemaMonitor) Untrip() {
+	monitor.delegate.Untrip()
+}
+
+func (monitor *JsonSchemaMonitor) IsTripped() bool {
+	return monitor.delegate.IsTripped()
+}
+
 func NewJsonSchemaMonitorWithOptions(title, description, url, schema string,
 	opts *core.HttpMonitorOptions) *JsonSchemaMonitor {
 	opts.Successful = checkSchema(schema)
