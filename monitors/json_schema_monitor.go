@@ -13,6 +13,9 @@ type JsonSchemaMonitor struct {
 	schema   string
 }
 
+// ensure we always implement Monitor
+var _ core.Monitor = (*JsonSchemaMonitor)(nil)
+
 func checkSchema(schemaFile string) core.SuccessChecker {
 	return func(resp *http.Response) bool {
 		body, err := ioutil.ReadAll(resp.Body)
