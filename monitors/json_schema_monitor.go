@@ -20,7 +20,7 @@ func checkSchema(schemaFile string) core.SuccessChecker {
 	return func(resp *http.Response) bool {
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			log.Fatalf("error reading response body, %v", err)
+			log.Printf("error reading response body, %v", err)
 			return false
 		}
 
