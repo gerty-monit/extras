@@ -45,7 +45,7 @@ func checkSchema(schemaFile string) core.SuccessChecker {
 	}
 }
 
-func (monitor *JsonSchemaMonitor) Check() int {
+func (monitor *JsonSchemaMonitor) Check() core.Result {
 	return monitor.delegate.Check()
 }
 
