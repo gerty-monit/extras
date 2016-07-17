@@ -1,7 +1,7 @@
 package monitors
 
 import (
-	core "github.com/gerty-monit/core/monitors"
+	core "github.com/gerty-monit/core"
 	"os"
 	"testing"
 )
