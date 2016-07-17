@@ -9,8 +9,8 @@ import (
 )
 
 type JsonSchemaMonitor struct {
-	delegate *core.HttpMonitor
-	schema   string
+	*core.HttpMonitor
+	schema string
 }
 
 // ensure we always implement Monitor
@@ -43,34 +43,6 @@ func checkSchema(schemaFile string) core.SuccessChecker {
 			return false
 		}
 	}
-}
-
-func (monitor *JsonSchemaMonitor) Check() core.Result {
-	return monitor.delegate.Check()
-}
-
-func (monitor *JsonSchemaMonitor) Description() string {
-	return monitor.delegate.Description()
-}
-
-func (monitor *JsonSchemaMonitor) Name() string {
-	return monitor.delegate.Name()
-}
-
-func (monitor *JsonSchemaMonitor) Values() []core.ValueWithTimestamp {
-	return monitor.delegate.Values()
-}
-
-func (monitor *JsonSchemaMonitor) Trip() {
-	monitor.delegate.Trip()
-}
-
-func (monitor *JsonSchemaMonitor) Untrip() {
-	monitor.delegate.Untrip()
-}
-
-func (monitor *JsonSchemaMonitor) IsTripped() bool {
-	return monitor.delegate.IsTripped()
 }
 
 func NewJsonSchemaMonitorWithOptions(title, description, url, schema string,
