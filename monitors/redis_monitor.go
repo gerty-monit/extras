@@ -77,5 +77,7 @@ func (monitor *RedisMonitor) Check() core.Result {
 		monitor.buffer.Append(core.NOK)
 		return core.NOK
 	}
+
+	monitor.buffer.Append(core.OK)
 	return core.OK
 }
